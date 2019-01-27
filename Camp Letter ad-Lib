@@ -1,0 +1,23 @@
+input_a = input("relative: ")
+input_b = input("adjective: ")
+input_c = input("adjective: ")
+input_d = input("adjective: ")
+input_e = input("name of person in room: ")
+input_f = input("adjective: ")
+input_g = input("adjective: ")
+input_h = input("verb ending in ED: ")
+input_i = input("body part: ")
+input_j = input("verb ending in ING: ")
+input_k = input("plural noun: ")
+input_l = input("noun: ")
+input_m = input("adverb: ")
+input_n = input("verb: ")
+input_o = input("verb: ")
+input_p = input("relative: ")
+input_q = input("person in room: ")
+
+adlib = """Dear """ + input_a + """ , I am having a(n) """ + input_b + """ time at camp. The counselour is """ + input_c + """ and the food is """ + input_d + """. I met """ + input_e + """ and we became """ + input_f + """ friends. Unfortunately, """ + input_e + """ is """ + input_g + """ and I """ + input_h + """ my """ + input_i + """ so we couldn`t go """ + input_j + """ like everybody else. I need more """ + input_k + """ and a """ + input_l + """ sharpener, so please """ + input_m + """ """ + input_n + """ more when you """ + input_o + """ back. Your """ + input_p + """, """ + input_q
+
+print("""
+""")
+print(adlib)
