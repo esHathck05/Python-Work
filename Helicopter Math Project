@@ -1,5 +1,11 @@
 import math
+
 z = int(input("What is the value for z? "))
 angle_e = int(input("What is the value for angle e? "))
 angle_a = int(input("What is the value for angle a? "))
+X_sub_l = int(input("What is the x coordinate of the antenna? "))
+Y_sub_l = int(input("What is the y coordinate of the antenna? "))
 TP = z * math.tan(angle_e)
+Y_sub_p = TP * math.sin(angle_a)
+X_sub_p = math.sqrt((TP ** 2) - (Y_sub_p ** 2))
+N = math.abs(
