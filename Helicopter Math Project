@@ -6,16 +6,17 @@ angle_a = float(input("What is the value for angle a? "))
 X_sub_l = float(input("What is the x coordinate of the antenna? "))
 Y_sub_l = float(input("What is the y coordinate of the antenna? "))
 
-TP = z * math.tan(math.degrees(angle_e))
-Y_sub_p = TP * math.sin(math.degrees(angle_a))
+TP = z * math.tan(math.degrees(angle_e)) # Ask Mr. Dennison; the answer python gives is different than calculator
+Y_sub_p = TP * math.sin(math.degrees(angle_a)) # Everything else is wrong because TP is incorrect
 X_sub_p = math.sqrt((TP ** 2) - (Y_sub_p ** 2))
+print(str(Y_sub_p) + ", " + str(X_sub_p))
 N = abs(Y_sub_p - Y_sub_l)
 D = abs(X_sub_p - X_sub_l)
 LP = math.sqrt((D ** 2) + (N ** 2))
 elev = 90 - math.atan(math.degrees(z - 61)/LP)
-print(elev)
 range_ = (z - 61)/math.sin(math.degrees(90) - elev)
 
+# This is not complete! Edit it once it is
 """
 if 0 <= angle_a and 90 >= angle_a:
     azim = math.atan(math.degrees(abs(N/D)))
