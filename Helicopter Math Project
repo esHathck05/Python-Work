@@ -25,6 +25,7 @@ else:
     else:
         if 180 < angle_a and 270 >= angle_a:
             azim = abs(N/D) + 180
+            print(azim)
         else:
             if 270 < angle_a and 360 >= angle_a:
                 azim = abs(N/D) + 90
