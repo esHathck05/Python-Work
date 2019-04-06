@@ -50,16 +50,11 @@ print("LP = " + str(LP))
 print("Elev = " + str(elev))
 print("Range = " + str(range_))
 
-# This is not complete! Edit it once it is
-if 0 <= angle_a and 90 >= angle_a:
-    azim = math.atan(math.degrees(abs(N/D)))
-    print(azim)
-elif 90 < angle_a and 180 >= angle_a:
-    azim = abs(N/D) + 90
-    print(azim)
-elif 180 < angle_a and 270 >= angle_a:
-    azim = abs(N/D) + 180
-    print(azim)
-elif 270 < angle_a and 360 >= angle_a:
-    azim = abs(N/D) + 90
-    print(azim)
+if xsubp > xsubl and ysubp > ysubl:
+    azim = math.degrees(math.atan(D/N))
+elif xsubp < xsubl and ysubp < ysubl:
+    azim = math.degrees(math.atan(D/N)) + 180
+elif xsubp > xsubl and ysubp < ysubl:
+    azim = math.degrees(math.atan(D/N)) + 270
+elif xsubp < xsubl and ysubp > ysubl:
+    azim = math.degrees(math.atan(D/N)) + 90
