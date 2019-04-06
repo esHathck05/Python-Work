@@ -3,21 +3,54 @@ import math
 z = float(input("What is the value for z? "))
 angle_e = float(input("What is the value for angle e? "))
 angle_a = float(input("What is the value for angle a? "))
-X_sub_l = float(input("What is the x coordinate of the antenna? "))
-Y_sub_l = float(input("What is the y coordinate of the antenna? "))
+xsubl = float(input("What is the x coordinate of the antenna? "))
+ysubl = float(input("What is the y coordinate of the antenna? "))
 
 TP = z * math.tan(math.radians(angle_e))
 print(TP)
-Y_sub_p = TP * math.sin(math.radians(angle_a))
-X_sub_p = math.sqrt((TP ** 2) - (Y_sub_p ** 2))
-N = abs(Y_sub_p - Y_sub_l)
-D = abs(X_sub_p - X_sub_l)
+ysubp = TP * math.sin(math.radians(angle_a))
+
+if 90 < angle_a and 270 > angle_a:
+    xsubp = -(math.sqrt((TP ** 2) - (ysubp ** 2)))
+elif 90 > angle_a or 270 < angle_a:
+    xsubp = math.sqrt((TP ** 2) - (ysubp ** 2))
+
+print("P = " + str(xsubp) + ", " + str(ysubp))
+
+if xsubp < 0 and xsubl < 0:
+    D = abs(abs(xsubp) - abs(xsubl))
+elif xsubp > 0 and xsubl > 0:
+    D = abs(abs(xsubp) - abs(xsubl))
+elif xsubp > 0 and xsubl < 0:
+    D = abs(abs(xsubp) + abs(xsubl))
+elif xsubp < 0 and xsubl > 0:
+    D = abs(abs(xsubp) + abs(xsubl))
+    
+print("D = " + str(D))
+
+# Maybe not all supposed to be Ns?
+# In the document it was all Ds but that didn't seem right
+# So I changed it to all Ns
+if ysubp < 0 and ysubl < 0:
+    N = abs(abs(ysubp) - abs(ysubl))
+elif ysubp > 0 and ysubl > 0:
+    N = abs(abs(ysubp) - abs(ysubl))
+elif ysubp > 0 and ysubl < 0:
+    N = abs(abs(ysubp) + abs(ysubl))
+elif ysubp < 0 and ysubl > 0:
+    N = abs(abs(ysubp) + abs(ysubl))
+    
+print("N = " + str(N))
+    
 LP = math.sqrt((D ** 2) + (N ** 2))
 elev = 90 - math.degrees(math.atan(z - 61)/LP)
 range_ = (z - 61)/math.sin(math.degrees(90) - elev)
 
+print("LP = " + str(LP))
+print("Elev = " + str(elev))
+print("Range = " + str(range_))
+
 # This is not complete! Edit it once it is
-"""
 if 0 <= angle_a and 90 >= angle_a:
     azim = math.atan(math.degrees(abs(N/D)))
     print(azim)
@@ -30,4 +63,3 @@ elif 180 < angle_a and 270 >= angle_a:
 elif 270 < angle_a and 360 >= angle_a:
     azim = abs(N/D) + 90
     print(azim)
-"""
