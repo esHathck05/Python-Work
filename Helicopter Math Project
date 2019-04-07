@@ -7,7 +7,6 @@ xsubl = float(input("What is the x coordinate of the antenna? "))
 ysubl = float(input("What is the y coordinate of the antenna? "))
 
 TP = z * math.tan(math.radians(angle_e))
-print(TP)
 ysubp = TP * math.sin(math.radians(angle_a))
 
 if 90 < angle_a and 270 > angle_a:
@@ -58,3 +57,5 @@ elif xsubp > xsubl and ysubp < ysubl:
     azim = math.degrees(math.atan(D/N)) + 270
 elif xsubp < xsubl and ysubp > ysubl:
     azim = math.degrees(math.atan(D/N)) + 90
+    
+print("Azim = " + str(azim))
