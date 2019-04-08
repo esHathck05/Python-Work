@@ -13,14 +13,14 @@ ysubp = xsubp * math.tan(math.radians(angle_a))
 print("TP = " + str(TP))
 print("P = " + str(xsubp) + ", " + str(ysubp))
 
-D = abs(xsubl - xsubp)
-N = abs(ysubl - ysubp)
+D = xsubl - xsubp
+N = ysubl - ysubp
     
 print("D = " + str(D))
 print("N = " + str(N))
 
 LP = math.sqrt((D ** 2) + (N ** 2))
-elev = 90 - math.degrees(math.atan(z - 61)/LP)
+elev = 90 - math.degrees(math.atan((z - 61)/LP))
 range_ = abs((z - 61)/math.sin(math.radians(90 - elev)))
 
 print("LP = " + str(LP))
@@ -28,12 +28,12 @@ print("Elev = " + str(elev))
 print("Range = " + str(range_))
 
 if xsubp > xsubl and ysubp > ysubl:
-    azim = math.degrees(math.atan(D/N))
+    azim = math.degrees(math.atan(N/D))
 elif xsubp < xsubl and ysubp < ysubl:
-    azim = math.degrees(math.atan(D/N)) + 180
+    azim = math.degrees(math.atan(N/D)) + 180
 elif xsubp > xsubl and ysubp < ysubl:
-    azim = math.degrees(math.atan(D/N)) + 270
+    azim = math.degrees(math.atan(N/D)) + 360
 elif xsubp < xsubl and ysubp > ysubl:
-    azim = math.degrees(math.atan(D/N)) + 90
+    azim = math.degrees(math.atan(N/D)) + 180
     
 print("Azim = " + str(azim))
