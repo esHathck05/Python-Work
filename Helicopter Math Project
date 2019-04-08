@@ -7,43 +7,21 @@ xsubl = float(input("What is the x coordinate of the antenna? "))
 ysubl = float(input("What is the y coordinate of the antenna? "))
 
 TP = z * math.tan(math.radians(angle_e))
-ysubp = TP * math.sin(math.radians(angle_a))
+xsubp = math.sin(math.radians(90 - angle_a))
+ysubp = xsubp * math.tan(math.radians(angle_a))
 
-if 90 < angle_a and 270 > angle_a:
-    xsubp = -(math.sqrt((TP ** 2) - (ysubp ** 2)))
-elif 90 > angle_a or 270 < angle_a:
-    xsubp = math.sqrt((TP ** 2) - (ysubp ** 2))
-
+print("TP = " + str(TP))
 print("P = " + str(xsubp) + ", " + str(ysubp))
 
-if xsubp < 0 and xsubl < 0:
-    D = abs(abs(xsubp) - abs(xsubl))
-elif xsubp > 0 and xsubl > 0:
-    D = abs(abs(xsubp) - abs(xsubl))
-elif xsubp > 0 and xsubl < 0:
-    D = abs(abs(xsubp) + abs(xsubl))
-elif xsubp < 0 and xsubl > 0:
-    D = abs(abs(xsubp) + abs(xsubl))
+D = abs(xsubl - xsubp)
+N = abs(ysubl - ysubp)
     
 print("D = " + str(D))
-
-# Maybe not all supposed to be Ns?
-# In the document it was all Ds but that didn't seem right
-# So I changed it to all Ns
-if ysubp < 0 and ysubl < 0:
-    N = abs(abs(ysubp) - abs(ysubl))
-elif ysubp > 0 and ysubl > 0:
-    N = abs(abs(ysubp) - abs(ysubl))
-elif ysubp > 0 and ysubl < 0:
-    N = abs(abs(ysubp) + abs(ysubl))
-elif ysubp < 0 and ysubl > 0:
-    N = abs(abs(ysubp) + abs(ysubl))
-    
 print("N = " + str(N))
-    
+
 LP = math.sqrt((D ** 2) + (N ** 2))
 elev = 90 - math.degrees(math.atan(z - 61)/LP)
-range_ = (z - 61)/math.sin(math.degrees(90) - elev)
+range_ = (z - 61)/math.sin(math.radians(90) - elev)
 
 print("LP = " + str(LP))
 print("Elev = " + str(elev))
