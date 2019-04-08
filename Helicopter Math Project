@@ -7,7 +7,7 @@ xsubl = float(input("What is the x coordinate of the antenna? "))
 ysubl = float(input("What is the y coordinate of the antenna? "))
 
 TP = z * math.tan(math.radians(angle_e))
-xsubp = math.sin(math.radians(90 - angle_a))
+xsubp = math.sin(math.radians(90 - angle_a)) * TP
 ysubp = xsubp * math.tan(math.radians(angle_a))
 
 print("TP = " + str(TP))
@@ -21,7 +21,7 @@ print("N = " + str(N))
 
 LP = math.sqrt((D ** 2) + (N ** 2))
 elev = 90 - math.degrees(math.atan(z - 61)/LP)
-range_ = (z - 61)/math.sin(math.radians(90) - elev)
+range_ = abs((z - 61)/math.sin(math.radians(90 - elev)))
 
 print("LP = " + str(LP))
 print("Elev = " + str(elev))
