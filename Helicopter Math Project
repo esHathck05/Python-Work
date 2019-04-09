@@ -1,3 +1,8 @@
+"""
+Ben Wagner, Linus Mayo, Esther Hacker
+Calculator (Python) Program
+"""
+
 import math
 
 z = float(input("What is the value for z? "))
@@ -13,8 +18,8 @@ ysubp = xsubp * math.tan(math.radians(angle_a))
 print("TP = " + str(TP))
 print("P = " + str(xsubp) + ", " + str(ysubp))
 
-D = xsubl - xsubp
-N = ysubl - ysubp
+D = xsubp - xsubl
+N = ysubp - ysubl
     
 print("D = " + str(D))
 print("N = " + str(N))
