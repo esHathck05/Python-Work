@@ -6,8 +6,8 @@ Calculator (Python) Program
 import math
 
 z = float(input("What is the value for z? "))
-angle_e = float(input("What is the value for angle e? "))
-angle_a = float(input("What is the value for angle a? "))
+angle_e = float(input("What is the value for angle E? "))
+angle_a = float(input("What is the value for angle A? "))
 xsubl = float(input("What is the x coordinate of the antenna? "))
 ysubl = float(input("What is the y coordinate of the antenna? "))
 
@@ -15,22 +15,12 @@ TP = z * math.tan(math.radians(angle_e))
 xsubp = math.sin(math.radians(90 - angle_a)) * TP
 ysubp = xsubp * math.tan(math.radians(angle_a))
 
-print("TP = " + str(TP))
-print("P = " + str(xsubp) + ", " + str(ysubp))
-
 D = xsubp - xsubl
 N = ysubp - ysubl
-    
-print("D = " + str(D))
-print("N = " + str(N))
 
 LP = math.sqrt((D ** 2) + (N ** 2))
 elev = 90 - math.degrees(math.atan((z - 61)/LP))
 range_ = abs((z - 61)/math.sin(math.radians(90 - elev)))
-
-print("LP = " + str(LP))
-print("Elev = " + str(elev))
-print("Range = " + str(range_))
 
 if xsubp > xsubl and ysubp > ysubl:
     azim = math.degrees(math.atan(N/D))
@@ -40,5 +30,7 @@ elif xsubp > xsubl and ysubp < ysubl:
     azim = math.degrees(math.atan(N/D)) + 360
 elif xsubp < xsubl and ysubp > ysubl:
     azim = math.degrees(math.atan(N/D)) + 180
-    
+
+print("Elev = " + str(elev))
 print("Azim = " + str(azim))
+print("Range = " + str(range_))
